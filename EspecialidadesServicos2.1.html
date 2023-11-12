@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<html lang="pt-PT">
+
+</html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="normalize.css">
+    <link href="jquery-ui/jquery-ui.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script src="jquery-ui/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+    <title>Os Nossos Serviços</title>
+
+</head>
+
+<style type="text/css">
+    /* Estilos para telas menores (tablets) */
+
+    @media (max-width: 768px) {
+
+        body {
+            background-color: #e1e1ff;
+            background-image: linear-gradient(0deg, #e1e1ff 0%, #9595e3 33%, #b1a0f9 66%, #ffffff 100%);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .wrappers {
+            width: 100%;
+            height: auto;
+            margin: 0 0 20px;
+            padding: 1rem;
+            box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease-in-out;
+        }
+
+    }
+
+    /* Estilos para telas ainda menores (dispositivos móveis) */
+
+    @media (max-width: 576px) {
+
+        body {
+            background-color: #e1e1ff;
+            background-image: linear-gradient(0deg, #e1e1ff 0%, #9595e3 33%, #b1a0f9 66%, #ffffff 100%);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+        }
+
+        .wrappers {
+            width: 100%;
+            height: auto;
+            margin: 0 0 20px;
+            padding: 1rem;
+            box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease-in-out;
+        }
+    }
+
+    /*CONFIGURACOES DO BODY DO SITE*/
+    body {
+        background-color: #e1e1ff;
+        background-image: linear-gradient(0deg, #e1e1ff 0%, #9595e3 33%, #b1a0f9 66%, #ffffff 100%);
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* BARRA DE NAVEGACAO */
+    nav {
+        background-color: rgba(17, 0, 81, 0.7);
+        /* Azul suave com opacidade (0.7) para a barra de navegação */
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .nav-item {
+        margin: 0 15px;
+        transition: color 0.2s;
+    }
+
+    .nav-item a {
+        text-decoration: none;
+        color: #FF6E1B;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .nav-item a:hover {
+        color: rgb(17, 0, 81);
+        /* Cor mais clara ao passar o mouse */
+    }
+
+    /* Ícones de Mídias Sociais na Barra de Navegação */
+    .social-media2 {
+        font-size: 18px;
+    }
+
+    .social-media2 a i {
+        transition: 0.2s;
+        color: #FF6E1B;
+    }
+
+    .social-media2 a i:hover {
+        color: rgb(17, 0, 81);
+    }
+
+
+    .scroll-down {
+        font-size: 36px;
+        color: #0078d4;
+        cursor: pointer;
+    }
+
+    .scroll-down:hover {
+        color: #005ea0;
+        /* Cor mais escura ao passar o mouse */
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-card {
+        width: 100%;
+        border: 1px solid rgb(255, 110, 27);
+        margin-bottom: 20px;
+        border-radius: 5px;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.171) 100%, rgba(186, 186, 186, 0.144) 100%);
+        transition: all 0.3s;
+    }
+
+    .service-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.171) 100%, rgba(186, 186, 186, 0.144) 100%);
+        color: rgb(17, 0, 81);
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        cursor: pointer;
+    }
+
+    .service-header h2 {
+        margin: 0;
+    }
+
+    .toggle-button {
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .service-description {
+        padding: 20px;
+        display: none;
+    }
+
+    .service-card.active .service-description {
+        display: block;
+    }
+
+    .service-header.active {
+        background: #0056b3;
+    }
+
+    .service-header.active .toggle-button {
+        transform: rotate(45deg);
+    }
+
+    /* Seção Nossa Filosofia */
+    .ourPhylosophy {
+        background: linear-gradient(90deg, rgba(176, 171, 192, 0) 100%, rgba(186, 186, 186, 0) 100%);
+        padding: 50px 0;
+        text-align: center;
+        color: #333;
+    }
+
+    /* Configurações de Cards (Nossa Filosofia) */
+    .wrapper {
+        display: flex;
+        justify-content: space-around;
+        width: 30%;
+        padding: 0px 0px 0px 200px;
+
+    }
+
+    .wrappers {
+        width: 280px;
+        height: 360px;
+        padding: 2rem 1rem;
+        background: #fff;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.537);
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .wrappers:hover {
+        transform: translateY(20px);
+    }
+
+    .wrappers:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), #110057);
+        z-index: 2;
+        transition: opacity 0.5s;
+        opacity: 0;
+    }
+
+    .wrappers:hover:before {
+        opacity: 1;
+    }
+
+    .wrappers img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .wrappers .info {
+        position: relative;
+        z-index: 3;
+        color: #FF6E1B;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.5s, transform 0.5s;
+    }
+
+    .wrappers:hover .info {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .wrappers .info h1 {
+        margin: 0;
+    }
+
+    .wrappers .info p {
+        letter-spacing: 1px;
+        font-size: 15px;
+        margin-top: 8px;
+        margin-bottom: 20px;
+    }
+
+            /* Seção Informações */
+            #info {
+                background:linear-gradient(90deg, rgba(255, 255, 255, 0.171) 100%, rgba(186, 186, 186, 0.144) 100%);
+                padding: 50px 0;
+            }
+
+            /* Ícone do Livro de Reclamações */
+            .reclamationBook {
+                transition: opacity 0.5s, transform 0.5s;
+                transform: translateX(-30px);
+            }
+
+            .reclamationBook:hover {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            /* Horário de Funcionamento */
+            .openTime {
+                margin-top: 20px;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+
+            /* Ícones de Mídias Sociais nas Informações */
+            .social-media {
+                font-size: 24px;
+                margin-top: 45px;
+            }
+
+            .social-media a i {
+                color: #FF6E1B;
+                transition: 0.2s;
+            }
+
+            .social-media a i:hover {
+                color: rgb(17, 0, 81)
+            }
+
+            /* Rodapé */
+            footer {
+                background: linear-gradient(90deg, rgba(212, 209, 221, 0.9) 100%, rgba(186, 186, 186, 0.42) 100%);
+                padding: 30px 40px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            footer.container {
+                height: 100%;
+            }
+
+            .copyrigth {
+                color: #110057;
+                font-size: 18px;
+                font-weight: bold; 
+            }
+</style>
+
+<body>
+    <!-- NAVBAR-->
+
+    <nav class="navbar navbar-expand-md bg-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="AlexFisio2.1.html">
+                <img src="logo/fisiologovf.png" alt="Bootstrap" width="150">
+            </a>
+            <button class="btn navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="AlexFisio2.1.html">PÁGINA INICIAL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="QuemSomos2.1.html">QUEM SOMOS</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                            href="EspecialidadesServicos2.1.html" role="button" aria-expanded="false">SERVIÇOS</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="EspecialidadesServicos2.1.html">Serviços - Geral</a></li>
+                            <li><a class="dropdown-item" href="#Phylosophy">Fisioterapia</a></li>
+                            <li><a class="dropdown-item" href="#Phylosophy">Fisioterapia ao Domicilio</a></li>
+                            <li><a class="dropdown-item" href="#Phylosophy">Venda de Material Ortopédico</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ACORDOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacts">CONTATOS</a>
+                    </li>
+                </ul>
+                <div class="social-media2">
+                    <a href="https://www.instagram.com/alex94psantos/"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.facebook.com/Alex94PSantos"><i class="bi bi-facebook px-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION "SERVIÇOS" -->
+
+    <section id="acordionService">
+        <div class="container col-sm-10 px-3 py-4">
+            <div class="row align-items-center g-lg-5 py-3 mt-3">
+                <div class="acordinText">
+                    <h1 class="display-4 fw-bold lh-1 " style="color:rgb(17, 0, 81)">As Nossas Especialidades...</h1>
+                </div>
+                <div class="acordinText">
+
+                    <p class="display-2 fs-4" style="color:rgb(255, 110, 27)">Saiba em promenor em que consistem os
+                        serviços que prestamos.</p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--SECÇÃO SERVIÇOS PRESTADOS-->
+
+    <section id="services">
+        <div class="container">
+            <div class="service-card">
+                <div class="service-header">
+                    <h2>Fisioterapia</h2>
+                    <div class="toggle-button">+</div>
+                </div>
+                <div class="service-description">
+                    <p>Serviço prestado que visa o desenvolvimento, manutenção e restauro do movimento e capacidade
+                        funcional. Visa aqueles, que de alguma forma, estão ameaçados devido à dor, a doenças, a
+                        distúrbios, lesões ou a outras condições e fatores ambientais.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <h2>Fisioterapia ao Domicílio</h2>
+                    <div class="toggle-button">+</div>
+                </div>
+                <div class="service-description">
+                    <p>Serviço semelhante ao anterior, proporcionado a qualquer pessoa que por necessidade ou
+                        preferência pretendam a deslocação do profissional ao seu próprio domicílio.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <h2>Venda de Material Ortopédico</h2>
+                    <div class="toggle-button">+</div>
+                </div>
+                <div class="service-description">
+                    <p>Serviço de venda de materiais que promovem a recuperação e auxiliam o processo de reabilitação.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+
+        const serviceCards = document.querySelectorAll(".service-card");
+
+        serviceCards.forEach((card) => {
+            const header = card.querySelector(".service-header");
+            const description = card.querySelector(".service-description");
+            const toggleButton = card.querySelector(".toggle-button");
+
+            header.addEventListener("click", () => {
+                card.classList.toggle("active");
+                if (card.classList.contains("active")) {
+                    description.style.maxHeight = description.scrollHeight + "px";
+                    toggleButton.textContent = "-";
+                } else {
+                    description.style.maxHeight = 0;
+                    toggleButton.textContent = "+";
+                }
+            });
+        });
+
+    </script>
+
+    <section class="ourPhylosophy" id="Phylosophy">
+        <div class="containertext-center py-4">
+            <div class="row col-lg-12 gx-3 py-5">
+                <div class="wrapper">
+                    <div class="wrappers">
+                        <img src="imagens/imagem fisio.jpg">
+                        <div class="info">
+                            <h4 class="card-title">Fisioterapia Geral</h4>
+                            <p>Desenvolvimento, Manutenção e Restauro do Movimento e Capacidade Funcional.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wrapper">
+                    <div class="wrappers">
+                        <img src="imagens/atendimento.png">
+                        <div class="info">
+                            <h4 class="card-title">Fisioterapia Geriátrica</h4>
+                            <p>Foco na Melhoria da Mobilidade, Prevenção de Quedas e Manutenção da Independência.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wrapper">
+                    <div class="wrappers">
+                        <img src="imagens/motivacao.png">
+                        <div class="info">
+                            <h4 class="card-title">Fisioterapia Desportiva</h4>
+                            <p>Prevenção e Tratamento de Lesões Relacionadas com o Desporto.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="info">
+
+        <div class="container col-10 text-center">
+            <div class="row align-items-center">
+            <div class="col ">
+                    <div class="container col-lg-10 ms-1 ps-1 py-3 px-3 ">
+
+
+                        <div class="container col-lg-10 ">
+
+                            <h5 class=" fw-semibold me-2" style="color:rgb(17, 0, 81)">Horário:</h5>
+                            <p class ="openTime" style="color:rgb(255, 110, 27)"><i class="bi bi-clock-fill pe-1" style="color:rgb(255, 110, 27)"></i> 9H-13H / 14h30-18h </p>
+                            
+                        </div>
+
+                        <div class="social-media container col-lg-10">
+
+                            <a href="https://www.instagram.com/alex94psantos/"><i class="bi bi-instagram me-5 "></i></a>
+
+                            <a href="https://www.facebook.com/Alex94PSantos"><i class="bi bi-facebook"></i></a>
+
+                        </div>
+
+                        <div class="reclamationBook container col-lg-10 me-2">
+                            <a href="https://www.livroreclamacoes.pt/INICIO/">
+                                <img src="imagens/reclamationBook2.png" style="width: 120px; height: 90px;">
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            <div class="col">
+                    <div class="container col-lg-10 px-3 py-3">
+                        <img src="logo/fisiologovf.png" alt="Bootstrap" width="300">
+                    </div>
+                </div>
+
+            <div class="col">
+                    <div class="container col-lg-10 py-3 ms-1 ps-1 text-center">
+
+                        <h5 class="me-2 fw-semibold" style="color:rgb(17, 0, 81)">Contate-nos através:</h5>
+                        <p class ="me-2 mb-0" style="color:rgb(17, 0, 81)"> <i class="bi bi-telephone-fill pe-1" style="color:rgb(17, 0, 81)"></i>Tel:</p>
+                        <p class ="me-2 mb-0" style="color:rgb(255, 110, 27)">+351 926 479 674 </p>
+                        <p class="me-2 mb-0 pt-4" style="color:rgb(17, 0, 81)"> <i class="bi bi-envelope-at-fill pe-1" style="color:rgb(17, 0, 81)"></i>E-mail:</p>
+                        <p class="me-2 mb-0" style="color:rgb(255, 110, 27)">fisioalexandresantos@gmail.com</p>
+                    </div>
+
+                    <div class="container col-lg-10 py-3 ms-1 ps-1 text-center ">
+
+                        <h5 class="mt-0 me-2 fw-semibold" style="color:rgb(17, 0, 81)">Onde estamos:</h5>
+                        <p class ="me-2 mb-0" style="color:rgb(255, 110, 27)"> <i class="bi bi-geo-alt-fill pe-1"></i>ALPEDRINHA </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+
+</html>
