@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html>
+    <html lang="pt-PT"></html>
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="normalize.css">
+        <link href="jquery-ui/jquery-ui.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script src="jquery-ui/jquery-ui.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        
+        <title>Alexandre Santos - Fisioterapia</title>
+
+        <style type="text/css">
+
+            /* Estilos para telas menores (tablets) */
+
+            @media (max-width: 768px) {
+
+                body {
+                    background-color: #e1e1ff;
+                    background-image: linear-gradient(0deg, #e1e1ff 0%, #9595e3 33%, #b1a0f9 66%, #ffffff 100%);
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .initialImage::before {
+                    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
+                }
+
+                .initialImage {
+                    background-size: cover;
+                    min-height: 40vh;
+                }
+
+                .interactive-image {
+                    width: 100%; /* A largura da imagem ocupa 100% da largura do contêiner */
+                    height: auto; /* A altura se ajustará automaticamente para manter a proporção */
+                
+                }
+
+                .wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 10px;
+                }
+
+                .wrappers {
+                    width: 100%;
+                    height: auto;
+                    margin: 0 0 20px;
+                    padding: 1rem;
+                    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+                    transition: transform 0.5s ease-in-out;
+                }
+
+                #circles {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 50vh; /* Reduzi a altura para melhor se adequar a telas menores */
+                    margin: 0;
+                    background-color: #e1e1ff;
+                    background-image: linear-gradient(0deg, #e1e1ff 0%, #9595e3 33%, #b1a0f9 66%, #ffffff 100%);
+                }
+
+                .circle-container {
+                    display: flex;
+                    flex-direction: column; /* Alterei para uma coluna em telas menores */
+                    align-items: center;
+                }
+
+                .circle {
+                    width: 100px; /* Reduzi o tamanho para caber em telas menores */
+                    height: 100px;
+                    margin: 10px 0; /* Adicionei um espaçamento vertical */
+                    border-radius: 50%; /* Usei 50% para torná-los círculos perfeitos */
+                    background: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.579);
+                    animation: fadeInOut 2s infinite alternate;
+                }
+
+                .circle img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 50%; /* Usado 50% para coincidir com a forma do contêiner */
+                }
+                
+            }
+
+            /* Estilos para telas ainda menores (dispositivos móveis) */
+
+            @media (max-width: 576px) {
+
+                body {
+                    background-color: #e1e1ff;
+                    background-image: linear-gradient(0deg, #e1e1ff 0%, #9595e3 33%, #b1a0f9 66%, #ffffff 100%);
+                    font-family: Arial, sans-serif;
+                    color: #333;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .initialImage::before {
+                    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+                }
+
+                .initialImage {
+                    background-size: cover;
+                    min-height: 30vh;
+                }
+
+                .interactive-image {
+                    width: 100%; /* A largura da imagem ocupa 100% da largura do contêiner */
+                    height: auto; /* A altura se ajustará automaticamente para manter a proporção */
+    
+                }
+
+                .wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 0;
+                }
+
+                .wrappers {
+                    width: 100%;
+                    height: auto;
+                    margin: 0 0 20px;
+                    padding: 1rem;
+                    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+                    transition: transform 0.5s ease-in-out;
+                }
+                
+                #circles {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 50vh; /* Reduzi a altura para melhor se adequar a telas menores */
+                    margin: 0;
+                    background-color: #e1e1ff;
+                    background-image: linear-gradient(0deg, #e1e1ff 0%, #9595e3 33%, #b1a0f9 66%, #ffffff 100%);
+                }
+
+                .circle-container {
+                    display: flex;
+                    flex-direction: column; /* Alterei para uma coluna em telas menores */
+                    align-items: center;
+                }
+
+                .circle {
+                    width: 100px; /* Reduzi o tamanho para caber em telas menores */
+                    height: 100px;
+                    margin: 10px 0; /* Adicionei um espaçamento vertical */
+                    border-radius: 50%; /* Usei 50% para torná-los círculos perfeitos */
+                    background: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.579);
+                    animation: fadeInOut 2s infinite alternate;
+                }
+
+                .circle img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 50%; /* Usado 50% para coincidir com a forma do contêiner */
+                }
+
+            }
+
+            /*CONFIGURACOES DO BODY DO SITE*/
+
+            body {
+                background-color: #e1e1ff;
+                background-image: linear-gradient(0deg, #e1e1ff 0%, #9595e3 33%, #b1a0f9 66%, #ffffff 100%);
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            
+            /* BARRA DE NAVEGACAO */
+            nav {
+                
+                background: rgba(17, 0, 81, 0.7); /* Azul suave com opacidade (0.7) para a barra de navegação */
+                padding: 20px 0;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            .nav-item {
+                margin: 0 15px;
+                transition: color 0.2s;
+            }
+
+            .nav-item a {
+                text-decoration: none;
+                color: #FF6E1B;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+            .nav-item a:hover {
+                color: rgb(17, 0, 81); /* Cor mais clara ao passar o mouse */
+            }
+
+            /* Ícones de Mídias Sociais na Barra de Navegação */
+            .social-media2 {
+                font-size: 18px;
+            }
+
+            .social-media2 a i {
+                transition: 0.2s;
+                color: #FF6E1B;
+            }
+
+            .social-media2 a i:hover {
+                color: rgb(17, 0, 81);
+            }
+            
+            /* Adicione um gradiente de fundo à classe .initialImage */
+
+            .initialImage::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
+            }
+
+            /* Mantenha a configuração anterior da classe .initialImage */
+            .initialImage {
+                background-size: cover;
+                min-height: 60vh;
+                position: relative;
+                color: white;
+            }
+
+            #image-container {
+                font-size: 30px;
+                font-weight: bold;
+                color: #110057;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                text-shadow: 2px 2px 2px 2px black;
+            }
+
+            .color-overlay {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+
+            .scroll-down {
+                font-size: 36px;
+                color: #0078d4;
+                cursor: pointer;
+            }
+
+            .scroll-down:hover {
+                color: #005ea0; /* Cor mais escura ao passar o mouse */
+            }
+
+            #circles {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                
+                
+                
+            }
+
+            .circle-container {
+                display: flex;
+            }
+
+            .circle {
+                width: 175px;
+                height: 175px;
+                margin: 0 20px;
+                border-radius: 70%;
+                background: linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.579);
+                animation: fadeInOut 2s infinite alternate;
+            }
+
+            .circle img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 70%;
+            }
+
+            @keyframes fadeInOut {
+                0%, 100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0;
+                }
+            }
+
+
+            /*SLIDER CIRCULAR IMAGES SETUP*/
+
+            #sliderImages {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 40vh;
+                margin-left: 200px;
+                margin-top: 120px;
+                
+            }
+
+            .slider {
+                position: relative;
+                width: 10rem;
+                height: 10rem;
+                transform-style: preserve-3d;
+                animation: rotate 30s linear infinite;
+                
+            }
+
+            @keyframes rotate {
+                0% {
+                    transform: perspective(1000px) rotateY(0deg);
+                }
+
+                100% {
+                    transform: perspective(1000px) rotateY(360deg);
+                }
+            }
+
+            .slider span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transform-origin: center;
+                transform-style: preserve-3d;
+                transform: rotateY(calc(var(--i) * 45deg)) translateZ(350px);
+            }
+
+            .slider span img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 100px;
+                object-fit: cover;
+                transition: 2s;
+            }
+
+
+            /* Seção HomeFisio Agendamento */
+            
+            #fisioHome, #fisioHome2 {
+                background: linear-gradient(90deg, rgba(255, 255, 255, 0.171) 100%, rgba(186, 186, 186, 0.144) 100%);
+                min-height: 30vh;
+                padding: 50px 0;
+                text-align: center;
+            }
+
+            /* Botões de Agendamento */
+            .btn {
+                background-color: #FF6E1B;
+                color: #fff;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-size: 16px;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+            }
+
+            .btn:hover {
+                background-color: rgb(17, 0, 81);
+            }
+
+            /* Imagem Principal do HomeFisio */
+            .isl {
+                opacity: 0;
+                transition: opacity 1.25s, transform 1.25s;
+                transform: translateX(0%);
+                border-radius: 10px;
+                object-fit: cover;
+                width: 100%;
+                height: auto;
+                animation: fadeInOut 10s infinite alternate, zoomInOut 3s infinite;
+            }
+
+            @keyframes fadeInOut {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes zoomInOut {
+                0% {
+                    transform: translateX(0%) scale(1); /* Início do zoom in/out */
+                }
+                25% {
+                    transform: translateX(0%) scale(1.1); /* Zoom in */
+                }
+                75% {
+                    transform: translateX(0%) scale(1.1); /* Zoom out */
+                }
+                100% {
+                    transform: translateX(0%) scale(1); /* Retorno ao tamanho original */
+                }
+            }
+
+
+
+            /* Seção Nossa Filosofia */
+            .ourPhylosophy {
+                padding: 50px 0;
+                text-align: center;
+            }
+
+            /* Configurações de Cards (Nossa Filosofia) */
+            .wrapper {
+                display: flex;
+                justify-content: space-around;
+                width:30%;
+                padding: 0px 0px 0px 200px;
+        
+            }
+
+            .wrappers {
+                width: 280px;
+                height: 360px;
+                padding: 2rem 1rem;
+                background: #fff;
+                position: relative;
+                display: flex;
+                align-items: flex-end;
+                box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+                transition: transform 0.5s ease-in-out;
+            }
+
+            .wrappers:hover {
+                transform: translateY(20px);
+            }
+
+            .wrappers:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), #110057);
+                z-index: 2;
+                transition: opacity 0.5s;
+                opacity: 0;
+            }
+
+            .wrappers:hover:before {
+                opacity: 1;
+            }
+
+            .wrappers img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .wrappers .info {
+                position: relative;
+                z-index: 3;
+                color: #FF6E1B;
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.5s, transform 0.5s;
+            }
+
+            .wrappers:hover .info {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .wrappers .info h1 {
+                margin: 0;
+            }
+
+            .wrappers .info p {
+                letter-spacing: 1px;
+                font-size: 15px;
+                margin-top: 8px;
+                margin-bottom: 20px;
+            }
+
+            /* Seção Nossas Especialidades */
+            #acordionService {
+                padding: 50px 0;
+            }
+
+            /* Cabeçalhos de Acordion */
+            .acordinText {
+                text-align: left;
+            }s
+
+            /* Seção Serviços */
+            #services {
+                
+                padding: 50px 0;
+            }
+
+            /* Cards de Serviços */
+            .card {
+                width: 400px;
+                height: 400px;
+            }
+
+            .card:hover {
+                transform: translateY(20px);
+            }
+
+            /* Seção Contatos */
+            #contacts {
+                padding: 50px 0;
+            }
+
+            .with-orange-border {
+                border: 2px solid rgb(255, 110, 27);
+                box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+                border-radius: 5px;
+                background: linear-gradient(90deg, rgba(255, 255, 255, 0.171) 100%, rgba(186, 186, 186, 0.144) 100%);
+            }
+
+            .form-check a {
+                text-decoration: none;
+                color: #110057;
+                transition: 0.2s;
+            }
+
+            .form-check a:hover {
+                color: #FF6E1B;
+            }
+
+            /* Seção Informações */
+            #info {
+                background:linear-gradient(90deg, rgba(255, 255, 255, 0.171) 100%, rgba(186, 186, 186, 0.144) 100%);
+                padding: 50px 0;
+            }
+
+            /* Ícone do Livro de Reclamações */
+            .reclamationBook {
+                transition: opacity 0.5s, transform 0.5s;
+                transform: translateX(-30px);
+            }
+
+            .reclamationBook:hover {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            /* Horário de Funcionamento */
+            .openTime {
+                margin-top: 20px;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+
+            /* Ícones de Mídias Sociais nas Informações */
+            .social-media {
+                font-size: 24px;
+                margin-top: 45px;
+            }
+
+            .social-media a i {
+                color: #FF6E1B;
+                transition: 0.2s;
+            }
+
+            .social-media a i:hover {
+                color: rgb(17, 0, 81)
+            }
+
+            /* Rodapé */
+            footer {
+                background: linear-gradient(90deg, rgba(212, 209, 221, 0.9) 100%, rgba(186, 186, 186, 0.42) 100%);
+                padding: 30px 40px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            footer.container {
+                height: 100%;
+            }
+
+            .copyrigth {
+                color: #110057;
+                font-size: 18px;
+                font-weight: bold; 
+            }
+
+
+
+            
+
+
+        </style>    
+    </head>
+
+<body>
+
+    <!-- NAVBAR-->
+
+    <nav class="navbar navbar-expand-md bg-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="AlexFisio2.1.html">
+                <img src="logo/fisiologovf.png" alt="Bootstrap" width="150">
+            </a>
+            <button class="btn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="QuemSomos2.1.html" >QUEM SOMOS</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="EspecialidadesServicos2.1.html" role="button" aria-expanded="false">SERVIÇOS</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="EspecialidadesServicos2.1.html">Serviços - Geral</a></li>
+                            <li><a class="dropdown-item" href="#acordionService">Fisioterapia</a></li>
+                            <li><a class="dropdown-item" href="#acordionService">Fisioterapia ao Domicilio</a></li>
+                            <li><a class="dropdown-item" href="#acordionService">Fisioterapia Geriátrica</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ACORDOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacts">CONTATOS</a>
+                    </li>
+                </ul>
+                <div class="social-media2">
+                    <a href="https://www.instagram.com/alex94psantos/"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.facebook.com/Alex94PSantos"><i class="bi bi-facebook px-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- OPEN IMAGE -->
+
+    <div id="paginaInicial" class="initialImage" style="background-image:url(imagens/imageInicial.jpg);">
+        <div class="col-lg-7 text-center text-lg-start">
+            <div class="display-5 fw-bold color-overlay d-flex justify-content-center align-items-center">
+                <div id="image-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPEN IMAGE PHRASES -->
+    <script type="text/javascript">
+        const sentences = [
+            "Bem Vindo à Alexandre Santos - Fisioterapia!",
+            "Temos os melhores profissionais à sua espera",
+            "Venha conhecer a nossa equipa, agende já a sua consulta",
+            "Para cuidar de si e da sua saúde!"
+        ];
+
+        const outputDiv = document.getElementById("image-container");
+        let currentIndex = 0;
+
+        function displayNextSentence() {
+            outputDiv.innerHTML = sentences[currentIndex];
+            currentIndex = (currentIndex + 1) % sentences.length;
+        }
+
+        setInterval(displayNextSentence, 2000);
+    </script>
+
+    <section id="circles">
+        <div class="circle-container">
+            <div class="circle">
+                <img src="imagem1.jpg" alt="Círculo 1">
+            </div>
+            <div class="circle">
+                <img src="imagem2.jpg" alt="Círculo 2">
+            </div>
+            <div class="circle">
+                <img src="imagem3.jpg" alt="Círculo 3">
+            </div>
+            <div class="circle">
+                <img src="imagem4.jpg" alt="Círculo 4">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION HOMEFISIO-->
+
+    <section id="fisioHome">
+        <div class="container col-lg-10 px-0 py-4">
+            <div class="row align-items-center g-lg-1 py-0">
+    
+                <div class="col-lg-7 text-center text-lg-start">
+                    <h1 class="homeFisio display-4 fw-bold lh-1" style="color:rgb(17, 0, 81)">Fisioterapia ao Domicilio</h1>
+                    <p class="homeFisio col-lg-10 fs-4" style="color:rgb(255, 110, 27)">Ligue já e marque a sua consulta ao domicilio!</p>
+                    <a href="#contacts"><button class="btn btn-primary my-4" type="button">Agendar Consulta</button></a>
+                </div>
+    
+                <div class="col-md-10 mx-auto col-lg-5">
+                    <div class="im2 oh">
+                        <img src="imagens/imageInicial.jpg" class="img-fluid isl border rounded-3 shadow-lg mb-4" style="height: 300px" width="400px" alt="Example">
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDER CIRCULAR IMAGES SETUP-->
+
+    <section id="sliderImages">
+        <div class="col-md-8 mx-auto col-lg-5 py-3 align-items-center">
+            <div class="row align-items-center g-lg-5 py-2"></div>
+                <div class="slider">
+                    <span style="--i:1;"><img src="imagens/imageInicial.jpg" alt=""></span>
+                    <span style="--i:2;"><img src="imagens/atendimento.png" alt=""></span>
+                    <span style="--i:3;"><img src="imagens/imagem fisio.jpg" alt=""></span>
+                    <span style="--i:4;"><img src="imagens/mao.png" alt=""></span>
+                    <span style="--i:5;"><img src="imagens/motivacao.png" alt=""></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <!-- SECTION "SERVIÇOS" -->
+
+    <section id="acordionService">
+        <div class="container col-sm-10 px-3 py-4">
+            <div class="row align-items-center g-lg-5 py-4 mt-5">
+               <div class="acordinText">
+                    <h1 class="display-4 fw-bold lh-1 " style="color:rgb(17, 0, 81)">As Nossas Especialidades...</h1>
+                </div>
+                <div class="acordinText">
+
+                    <a class="display-2 fs-4" style="color:rgb(255, 110, 27)" href="EspecialidadesServicos2.1.html">Saiba em promenor em que consistem os serviços que prestamos.</a>
+                        
+                </div>
+            </div>
+        </div>
+    </section>    
+
+    <!-- SECTION "OUR PHYLOSOPHY" -->
+
+    <section class="ourPhylosophy">
+        <div class="containertext-center">
+            <div class="row col-lg-12 gx-3">
+                <div class="wrapper">
+                    <div class="wrappers">
+                        <img src="imagens/imagem fisio.jpg">
+                        <div class="info">
+                           <h4 class="card-title">Fisioterapia Geral</h4>
+                           <p>Desenvolvimento, Manutenção e Restauro do Movimento e Capacidade Funcional.</p>
+                       </div>
+                    </div>
+                </div>
+    
+                <div class="wrapper">
+                    <div class="wrappers">
+                        <img src="imagens/atendimento.png">
+                        <div class="info">
+                            <h4 class="card-title">Fisioterapia Geriátrica</h4>
+                            <p>Foco na Melhoria da Mobilidade, Prevenção de Quedas e Manutenção da Independência.</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="wrapper">
+                    <div class="wrappers">
+                        <img src="imagens/motivacao.png">
+                        <div class="info">
+                            <h4 class="card-title">Fisioterapia Desportiva</h4>
+                            <p>Prevenção e Tratamento de Lesões Relacionadas com o Desporto.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION "CONTATOS" -->
+
+    <section id="contacts">
+        <div class="container col-lg-10 px-3 py-4">
+            <div class="row align-items-center g-lg-5 py-4 mt-5">
+
+                <form action="https://formspree.io/f/xvojyqzg" method="POST">
+                    <div class=" ">
+                        <h1 class="display-4 fw-bold lh-1" style="color:rgb(17, 0, 81)">Contatos...</h1>
+                        
+                        <p class="display-2 pt-1 fs-4" style="color:rgb(255, 110, 27)"> Agende já a sua consulta connosco...</p>
+                        <p class="col-lg-10 fs-6" style="color:rgb(255, 110, 27)"> Agendamento:</p>
+
+                    </div>
+                    <div class="contacts mb-3 mt-4">
+                    <label for="name" class="form-label" style="color:rgb(17, 0, 81)">Nome:</label>
+                    <input type="name" class="form-control with-orange-border" id="name" placeholder="O seu nome" name="name" required>
+                    </div>
+
+                    <div class="mb-3 mt-3">
+                        <label for="email" class="form-label" style="color:rgb(17, 0, 81)">E-mail:</label>
+                        <input type="email" class="form-control with-orange-border" id="email" placeholder="O seu e-mail" name="email" required>
+                    </div>
+
+                    <div class="mb-3 mt-3">
+                        <label for="phone" class="form-label" style="color:rgb(17, 0, 81)">Telemóvel/Telefone:</label>
+                        <input type="phone" class="form-control with-orange-border" id="phone" placeholder="O seu telemóvel/telefone" name="phone" required>
+                    </div>
+
+                    <div class="boxtext">
+                        <label for="mensage" style="color:rgb(17, 0, 81)">Mensagem:</label>
+                        <textarea class="form-control with-orange-border" rows="5" id="mensage" name="text" required></textarea>
+                    </div>
+
+                    <div class="form-check mb-3 mt-3">
+                        <label class="form-check-label"style="color:rgb(255, 110, 27)">
+                        <input id="privacy" class="form-check-input" type="checkbox" name="remember" required> <a href="privatePolitic.html">Concordo com a Politica de Privacidade.</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="info">
+
+        <div class="container col-10 text-center">
+            <div class="row align-items-center">
+            <div class="col ">
+                    <div class="container col-lg-10 ms-1 ps-1 py-3 ">
+
+
+                        <div class="container col-lg-10 ">
+
+                            <h5 class=" fw-semibold me-2" style="color:rgb(17, 0, 81)">Horário:</h5>
+                            <p class ="openTime" style="color:rgb(255, 110, 27)"><i class="bi bi-clock-fill pe-1" style="color:rgb(255, 110, 27)"></i> 9H-13H / 14h30-18h </p>
+                            
+                        </div>
+
+                        <div class="social-media container col-lg-10">
+
+                            <a href="https://www.instagram.com/alex94psantos/"><i class="bi bi-instagram me-5 "></i></a>
+
+                            <a href="https://www.facebook.com/Alex94PSantos"><i class="bi bi-facebook"></i></a>
+
+                        </div>
+
+                        <div class="reclamationBook container col-lg-10 me-2">
+                            <a href="https://www.livroreclamacoes.pt/INICIO/">
+                                <img src="imagens/reclamationBook2.png" style="width: 120px; height: 90px;">
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            <div class="col">
+                    <div class="container col-lg-10 px-3 py-3">
+                        <img src="logo/fisiologovf.png" alt="Bootstrap" width="300">
+                    </div>
+                </div>
+
+            <div class="col">
+                    <div class="container col-lg-10 py-3 ms-1 ps-1 text-center">
+
+                        <h5 class="me-2 fw-semibold" style="color:rgb(17, 0, 81)">Contate-nos através:</h5>
+                        <p class ="me-2 mb-0" style="color:rgb(17, 0, 81)"> <i class="bi bi-telephone-fill pe-1" style="color:rgb(17, 0, 81)"></i>Tel:</p>
+                        <p class ="me-2 mb-0" style="color:rgb(255, 110, 27)">+351 926 479 674 </p>
+                        <p class="me-2 mb-0 pt-4" style="color:rgb(17, 0, 81)"> <i class="bi bi-envelope-at-fill pe-1" style="color:rgb(17, 0, 81)"></i>E-mail:</p>
+                        <p class="me-2 mb-0" style="color:rgb(255, 110, 27)">fisioalexandresantos@gmail.com</p>
+                    </div>
+
+                    <div class="container col-lg-10 py-3 ms-1 ps-1 text-center ">
+
+                        <h5 class="mt-0 me-2 fw-semibold" style="color:rgb(17, 0, 81)">Onde estamos:</h5>
+                        <p class ="me-2 mb-0" style="color:rgb(255, 110, 27)"> <i class="bi bi-geo-alt-fill pe-1"></i>ALPEDRINHA </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+
+</body>

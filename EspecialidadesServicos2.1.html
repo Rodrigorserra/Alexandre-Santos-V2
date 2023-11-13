@@ -288,62 +288,76 @@
         margin-bottom: 20px;
     }
 
-            /* Seção Informações */
-            #info {
-                background:linear-gradient(90deg, rgba(255, 255, 255, 0.171) 100%, rgba(186, 186, 186, 0.144) 100%);
-                padding: 50px 0;
-            }
+    /* Seção Informações */
+    #info {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.171) 100%, rgba(186, 186, 186, 0.144) 100%);
+        padding: 50px 0;
+        
+    }
 
-            /* Ícone do Livro de Reclamações */
-            .reclamationBook {
-                transition: opacity 0.5s, transform 0.5s;
-                transform: translateX(-30px);
-            }
+    .horario{
+        margin-right: 100px;
+    }
 
-            .reclamationBook:hover {
-                opacity: 1;
-                transform: translateX(0);
-            }
+    /* Ícone do Livro de Reclamações */
+    .reclamationBook {
+        transition: opacity 0.5s, transform 0.5s;
+        transform: translateX(-30px);
+    }
 
-            /* Horário de Funcionamento */
-            .openTime {
-                margin-top: 20px;
-                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            }
+    .reclamationBook:hover {
+        opacity: 1;
+        transform: translateX(0);
+    }
 
-            /* Ícones de Mídias Sociais nas Informações */
-            .social-media {
-                font-size: 24px;
-                margin-top: 45px;
-            }
+    /* Horário de Funcionamento */
+    .openTime {
+        margin-top: 20px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        width: 170px;
+        
+    }
 
-            .social-media a i {
-                color: #FF6E1B;
-                transition: 0.2s;
-            }
+    /* Ícones de Mídias Sociais nas Informações */
+    .social-media {
+        font-size: 24px;
+        margin-top: 25px;
+        display: flex;
+        align-items: center;
+        flex-direction: row; /* Adicionado para forçar o eixo principal a ser horizontal */
+    }
 
-            .social-media a i:hover {
-                color: rgb(17, 0, 81)
-            }
+    .social-media a {
+    margin-right: 10px; /* Ajuste a margem conforme necessário */
+    }
 
-            /* Rodapé */
-            footer {
-                background: linear-gradient(90deg, rgba(212, 209, 221, 0.9) 100%, rgba(186, 186, 186, 0.42) 100%);
-                padding: 30px 40px 20px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
+    .social-media a i {
+        color: #FF6E1B;
+        transition: 0.2s;
+    }
 
-            footer.container {
-                height: 100%;
-            }
+    .social-media a i:hover {
+        color: rgb(17, 0, 81)
+    }
 
-            .copyrigth {
-                color: #110057;
-                font-size: 18px;
-                font-weight: bold; 
-            }
+    /* Rodapé */
+    footer {
+        background: linear-gradient(90deg, rgba(212, 209, 221, 0.9) 100%, rgba(186, 186, 186, 0.42) 100%);
+        padding: 30px 40px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    footer.container {
+        height: 100%;
+    }
+
+    .copyrigth {
+        color: #110057;
+        font-size: 18px;
+        font-weight: bold;
+    }
 </style>
 
 <body>
@@ -363,9 +377,6 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="AlexFisio2.1.html">PÁGINA INICIAL</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="QuemSomos2.1.html">QUEM SOMOS</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -375,14 +386,14 @@
                             <li><a class="dropdown-item" href="EspecialidadesServicos2.1.html">Serviços - Geral</a></li>
                             <li><a class="dropdown-item" href="#Phylosophy">Fisioterapia</a></li>
                             <li><a class="dropdown-item" href="#Phylosophy">Fisioterapia ao Domicilio</a></li>
-                            <li><a class="dropdown-item" href="#Phylosophy">Venda de Material Ortopédico</a></li>
+                            <li><a class="dropdown-item" href="#Phylosophy">Fisioterapia Geriátrica</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">ACORDOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contacts">CONTATOS</a>
+                        <a class="nav-link" href="AlexFisio2.1.html#contacts">CONTATOS</a>
                     </li>
                 </ul>
                 <div class="social-media2">
@@ -508,58 +519,58 @@
     </section>
 
     <section id="info">
-
+    
         <div class="container col-10 text-center">
             <div class="row align-items-center">
-            <div class="col ">
-                    <div class="container col-lg-10 ms-1 ps-1 py-3 px-3 ">
-
-
-                        <div class="container col-lg-10 ">
-
-                            <h5 class=" fw-semibold me-2" style="color:rgb(17, 0, 81)">Horário:</h5>
-                            <p class ="openTime" style="color:rgb(255, 110, 27)"><i class="bi bi-clock-fill pe-1" style="color:rgb(255, 110, 27)"></i> 9H-13H / 14h30-18h </p>
-                            
+                <div class="col horario ">
+                    <div class="container col-lg-10 ms-1 ps-1 py-3 ">
+    
+                        <div class="container col-lg-10">
+                            <h5 class="fw-semibold me-2" style="color:rgb(17, 0, 81)">Horário:</h5>
+                            <p class="openTime d-inline me-2" style="color:rgb(255, 110, 27)"><i class="bi bi-clock-fill pe-1" style="color:rgb(255, 110, 27)"></i>9H-13H / 14h30-18h </p>        
                         </div>
-
+    
                         <div class="social-media container col-lg-10">
-
+    
                             <a href="https://www.instagram.com/alex94psantos/"><i class="bi bi-instagram me-5 "></i></a>
-
+    
                             <a href="https://www.facebook.com/Alex94PSantos"><i class="bi bi-facebook"></i></a>
-
+    
                         </div>
-
+    
                         <div class="reclamationBook container col-lg-10 me-2">
                             <a href="https://www.livroreclamacoes.pt/INICIO/">
                                 <img src="imagens/reclamationBook2.png" style="width: 120px; height: 90px;">
                             </a>
                         </div>
-                        
+    
                     </div>
                 </div>
-
-            <div class="col">
+    
+                <div class="col horario">
                     <div class="container col-lg-10 px-3 py-3">
                         <img src="logo/fisiologovf.png" alt="Bootstrap" width="300">
                     </div>
                 </div>
-
-            <div class="col">
+    
+                <div class="col">
                     <div class="container col-lg-10 py-3 ms-1 ps-1 text-center">
-
-                        <h5 class="me-2 fw-semibold" style="color:rgb(17, 0, 81)">Contate-nos através:</h5>
-                        <p class ="me-2 mb-0" style="color:rgb(17, 0, 81)"> <i class="bi bi-telephone-fill pe-1" style="color:rgb(17, 0, 81)"></i>Tel:</p>
-                        <p class ="me-2 mb-0" style="color:rgb(255, 110, 27)">+351 926 479 674 </p>
-                        <p class="me-2 mb-0 pt-4" style="color:rgb(17, 0, 81)"> <i class="bi bi-envelope-at-fill pe-1" style="color:rgb(17, 0, 81)"></i>E-mail:</p>
+    
+                        <h5 class="fw-semibold" style="color:rgb(17, 0, 81)">Contate-nos através:</h5>
+                        <p class="me-2 mb-0" style="color:rgb(17, 0, 81)"> <i class="bi bi-telephone-fill pe-1"
+                                style="color:rgb(17, 0, 81)"></i>Tel:</p>
+                        <p class="me-2 mb-0" style="color:rgb(255, 110, 27)">+351 926 479 674 </p>
+                        <p class="me-2 mb-0 pt-4" style="color:rgb(17, 0, 81)"> <i class="bi bi-envelope-at-fill pe-1"
+                                style="color:rgb(17, 0, 81)"></i>E-mail:</p>
                         <p class="me-2 mb-0" style="color:rgb(255, 110, 27)">fisioalexandresantos@gmail.com</p>
                     </div>
-
+    
                     <div class="container col-lg-10 py-3 ms-1 ps-1 text-center ">
-
+    
                         <h5 class="mt-0 me-2 fw-semibold" style="color:rgb(17, 0, 81)">Onde estamos:</h5>
-                        <p class ="me-2 mb-0" style="color:rgb(255, 110, 27)"> <i class="bi bi-geo-alt-fill pe-1"></i>ALPEDRINHA </p>
-                        
+                        <p class="me-2 mb-0" style="color:rgb(255, 110, 27)"> <i
+                                class="bi bi-geo-alt-fill pe-1"></i>ALPEDRINHA </p>
+    
                     </div>
                 </div>
             </div>
